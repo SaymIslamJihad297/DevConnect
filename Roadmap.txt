@@ -1,0 +1,19 @@
+📌 Roadmap
+Phase 1: Setup Authentication & Session Management
+✅ Set up Express.js backend
+✅ Configure express-session for session management
+✅ Implement Passport.js for Local & Google & Github OAuth authentication
+✅ Create login/logout routes with session-based persistence
+✅ Protect private routes with req.isAuthenticated()
+Phase 2: User Profiles & Posts
+✅ Create MongoDB schemas for users, posts, and comments
+✅ Build profile pages where users can add skills, GitHub, and projects
+✅ Implement CRUD operations for posts and comments
+Phase 3: Real-Time Features & UI
+✅ Integrate Socket.io for real-time messaging
+✅ Implement frontend UI with React + Tailwind CSS
+✅ Add dark mode toggle
+Phase 4: Deployment & Optimization
+✅ Deploy Frontend (Vercel/Netlify)
+✅ Deploy Backend (Render/DigitalOcean)
+✅ Use Redis for session store (optional for scalability)
