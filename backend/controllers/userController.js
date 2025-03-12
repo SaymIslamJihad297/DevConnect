@@ -4,26 +4,35 @@ module.exports.signInWIthAccount = (req, res) => {
     res.send("Done");
 }
 
+module.exports.isLoggedIn = (req, res) => {
+    res.send(req.isAuthenticated());
+};
+
 
 module.exports.login = (req, res) => {
     res.send("Done");
 }
 
 module.exports.signUp = async (req, res, next) => {
-    let user = req.body;
-    let password = req.password;
-    console.log(user, password);
-    let newUser = await User.register(user, password);
+    try {
+        let { name, username, email, password } = req.body;
+        const newUser = new User({ name, username, email });
 
-    req.login(newUser, async (err) => {
-        if (err) {
-            return next(err);
-        } else {
-            await newUser.save();
-            res.send("Done");
-        }
-    })
-}
+        console.log(newUser, password);
+
+        let registerUser = await User.register(newUser, password);
+
+        req.login(registerUser, (err) => {
+            if (err) {
+                return next(err);
+            }
+            res.send("success");
+        });
+    } catch (error) {
+        next(error);
+    }
+};
+
 
 module.exports.logOut = (req, res, next) => {
     req.logout((error) => {
